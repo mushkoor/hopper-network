@@ -108,7 +108,8 @@ public class TCPClientTest {
 
         int messageCount = 900;
         int clientCount = 3;
-        MessageReceivedTrap responseReceivedTrap = new MessageReceivedTrap(messageCount);
+        MessageReceivedTrap responseReceivedTrap =
+                new MessageReceivedTrap(messageCount);
         List<DnsClient> clients = new ArrayList<DnsClient>(clientCount);
         for (int i = 0; i < clientCount; i++) {
             clients.add(DnsClient.builder().clientMessageHandler(responseReceivedTrap).build());
@@ -122,7 +123,7 @@ public class TCPClientTest {
 
         try {
             // wait for all of the responses to come back
-            Assert.assertTrue(responseReceivedTrap.latch.await(3, TimeUnit.SECONDS));
+            Assert.assertTrue(responseReceivedTrap.latch.await(25, TimeUnit.SECONDS));
         } finally {
             // shut down
             for (DnsClient client : clients) {
