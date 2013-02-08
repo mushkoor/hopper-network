@@ -1,4 +1,4 @@
 hopper-network
 ==============
 
-The framework for developing DNS Servers and client based on hopper.
+The framework for developing DNS servers and clients based on hopper.
